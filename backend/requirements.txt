@@ -1,0 +1,14 @@
+docker-compose
+markdown
+pudb
+ipython
+virtualenvwrapper
+gunicorn
+mysqlclient
+django
+django-mysql
+django-filter
+django-dotenv
+django-cors-headers
+djangorestframework
+djangorestframework_simplejwt
