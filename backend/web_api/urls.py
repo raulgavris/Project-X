@@ -2,6 +2,7 @@ from rest_framework_simplejwt import views as jwt_views
 from django.urls import path
 
 from web_api.views import HelloWorldView
+from web_api.views import SongView
 
 
 urlpatterns = [
@@ -10,4 +11,5 @@ urlpatterns = [
     # path('blacklist/', LogoutAndBlacklistRefreshTokenForUserView.as_view(), name='blacklist'),
 
     path('hello_world/', HelloWorldView.as_view()),
+    path('song_all/', SongView.as_view()),
 ]
