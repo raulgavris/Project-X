@@ -32,10 +32,10 @@ services:
             - db
         links:
             - db
-    frontend:
-        container_name: frontend
-        build: ./frontend
-        volumes:
-            - ./frontend/:/frontend/
-        ports:
-            - "${FE_PORT}:80"
+              #frontend:
+              #container_name: frontend
+              #build: ./frontend
+              #volumes:
+              #- ./frontend/:/frontend/
+              #ports:
+              #- "${FE_PORT}:80"
