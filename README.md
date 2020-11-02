@@ -3,14 +3,14 @@
 Requirements:  
 - Docker v3
 - MySQL v8
-- Node v12.18.4
+- Node v14.15.0
 
 
 Database:  
 Install requirements from: https://pypi.org/project/mysqlclient/
 
 Backend:  
-- Install pip3 python3 (3.8.2 at least)
+- Install pip3 python3 (3.8.5 at least)
 - Create a virtual env  
 mkvirtualenv projectx  
 workon projectx  

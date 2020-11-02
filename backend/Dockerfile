@@ -8,6 +8,7 @@ RUN apt-get update -y
 RUN apt-get install default-libmysqlclient-dev  -y
 
 RUN pip install -r requirements.txt
+RUN pip uninstall -y dotenv python-dotenv
 
 RUN /bin/bash -c 'echo "$(cat .env-for-source)" >> /root/.bashrc'
 

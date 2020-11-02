@@ -38,4 +38,4 @@ services:
         volumes:
             - ./frontend/:/frontend/
         ports:
-            - "${FE_PORT}:${FE_PORT}"
+            - "${FE_PORT}:80"
