@@ -1,17 +1,17 @@
 FROM python:3.8
 
-WORKDIR /backend
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
 
 COPY . /backend
+WORKDIR /backend
 
 RUN apt-get update -y
 RUN apt-get install default-libmysqlclient-dev  -y
 
 RUN pip install -r requirements.txt
-RUN pip uninstall -y dotenv python-dotenv
 
-RUN /bin/bash -c 'echo "$(cat .env-for-source)" >> /root/.bashrc'
+# TODO: Is this needed?
+# EXPOSE 8000
 
-EXPOSE 8000
-
-ENTRYPOINT ["/backend/entrypoint-backend.sh"]
+# ENTRYPOINT sh entrypoint-backend.sh
