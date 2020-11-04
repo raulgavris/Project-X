@@ -1,21 +1,13 @@
-FROM node:12.17-alpine as build
+FROM node:13.12.0-alpine
 
+COPY . /frontend
 WORKDIR /frontend
 
-COPY . /frontend/
+ENV PATH /frontend/node_modules/.bin:$PATH
 
-RUN npm install --silent
-RUN npm install react-scripts -g --silent
-RUN npm run build
+RUN npm install
+#--silent
+RUN npm install react-scripts@3.4.1 -g
 
-FROM nginx:1.19.1-alpine
-COPY --from=build /frontend/build /var/www/website
-RUN rm /etc/nginx/nginx.conf
-COPY nginx.conf /etc/nginx/nginx.conf
-
-COPY entrypoint-frontend.sh /usr/local/bin 
-
-EXPOSE 80
-EXPOSE 8080
-
-ENTRYPOINT ["/usr/local/bin/entrypoint-frontend.sh"]
+RUN npm run-script build
+RUN npm install -g serve

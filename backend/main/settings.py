@@ -92,10 +92,10 @@ WSGI_APPLICATION = 'main.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('DB_NAME'), # name of the database
-        'USER': os.environ.get('DB_USER'), # user to log into
-        'PASSWORD': os.environ.get('DB_PASSWORD'), # password for user
-        'HOST': os.environ.get('DB_HOST'), # host for the server if development is 127.0.0.1
+        'NAME': os.environ.get('MYSQL_DATABASE'), # name of the database
+        'USER': os.environ.get('MYSQL_USER'), # user to log into
+        'PASSWORD': os.environ.get('MYSQL_PASSWORD'), # password for user
+        'HOST': os.environ.get('MYSQL_HOST'), # host for the server if development is 127.0.0.1
         'PORT': os.environ.get('DB_PORT'), # port
         # 'OPTIONS': {
         #     'read_default_file': '/etc/mysql/my.cnf', # cnf file for mysql, could be in /etc/mysql/my.cnf
