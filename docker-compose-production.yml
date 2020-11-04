@@ -12,7 +12,7 @@ services:
       - './frontend:/frontend'
       - '/frontend/node_modules'
     ports:
-      - 5001:5000
+      - 5000:5000
     environment:
       - CHOKIDAR_USEPOLLING=true
 
