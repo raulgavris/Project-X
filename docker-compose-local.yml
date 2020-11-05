@@ -3,7 +3,7 @@ version: '3.7'
 services:
 
   frontend:
-    # container_name: sample
+    container_name: fe
     command: serve -s build
     build:
       context: ./frontend
@@ -17,8 +17,7 @@ services:
       - CHOKIDAR_USEPOLLING=true
 
   backend:
-    # container_name: sample
-    command: python manage.py runserver 0.0.0.0:8000
+    container_name: be
     build:
       context: ./backend
       dockerfile: Dockerfile
@@ -32,6 +31,7 @@ services:
         - db
 
   db:
+    container_name: db
     image: mysql:8
     restart: always
     command:
@@ -39,6 +39,8 @@ services:
         - '--character-set-server=utf8'
     ports:
         - 3306:3306
+    expose:
+        - '3306'
     volumes:
         - ./backend/db:/var/lib/mysql
     env_file:

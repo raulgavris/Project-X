@@ -2,7 +2,6 @@ docker-compose
 markdown
 pudb
 ipython
-virtualenvwrapper
 gunicorn
 mysqlclient
 django
