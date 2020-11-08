@@ -23,7 +23,7 @@ services:
       dockerfile: Dockerfile
     volumes:
         - ./backend:/backend
-    ports:
+    expose:
         - 8000:8000
     env_file:
         - ./backend/.env
