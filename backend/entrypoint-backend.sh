@@ -1,6 +1,7 @@
 #!/bin/sh
 sleep 30
 
+python3 manage.py collectstatic
 python3 manage.py makemigrations
 python3 manage.py migrate --run-syncdb
 

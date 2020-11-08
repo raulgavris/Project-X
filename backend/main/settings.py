@@ -82,21 +82,14 @@ WSGI_APPLICATION = 'main.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('MYSQL_DATABASE'), # name of the database
-        'USER': os.environ.get('MYSQL_USER'), # user to log into
-        'PASSWORD': os.environ.get('MYSQL_PASSWORD'), # password for user
-        'HOST': os.environ.get('MYSQL_HOST'), # host for the server if development is 127.0.0.1
-        'PORT': os.environ.get('DB_PORT'), # port
+        'NAME': os.environ.get('MYSQL_DATABASE', 'musichub'),
+        'USER': os.environ.get('MYSQL_USER', 'root'),
+        'PASSWORD': os.environ.get('MYSQL_PASSWORD', 'password'),
+        'HOST': os.environ.get('MYSQL_HOST', '127.0.0.1'),
+        'PORT': os.environ.get('DB_PORT', 3306),
         # 'OPTIONS': {
         #     'read_default_file': '/etc/mysql/my.cnf', # cnf file for mysql, could be in /etc/mysql/my.cnf
         # },
@@ -142,6 +135,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = '/tmp/static'
 
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 

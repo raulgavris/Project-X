@@ -12,5 +12,3 @@ RUN apt-get install default-libmysqlclient-dev  -y
 RUN pip install -r requirements.txt
 
 EXPOSE 8000
-
-ENTRYPOINT ["/backend/entrypoint-backend.sh"]
