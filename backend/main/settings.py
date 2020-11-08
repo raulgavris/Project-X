@@ -44,8 +44,11 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
-    'web_api'
+    'web_api',
+    'account'
 ]
+
+AUTH_USER_MODEL = 'account.Account' #change the built in user model to our custom one
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -92,11 +95,11 @@ WSGI_APPLICATION = 'main.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('MYSQL_DATABASE'), # name of the database
-        'USER': os.environ.get('MYSQL_USER'), # user to log into
-        'PASSWORD': os.environ.get('MYSQL_PASSWORD'), # password for user
-        'HOST': os.environ.get('MYSQL_HOST'), # host for the server if development is 127.0.0.1
-        'PORT': os.environ.get('DB_PORT'), # port
+        'NAME': 'musichub', # name of the database
+        'USER': 'ubusuc', # user to log into
+        'PASSWORD': 'password', # password for user
+        'HOST': '127.0.0.1', # host for the server if development is 127.0.0.1
+        'PORT': '3306', # port
         # 'OPTIONS': {
         #     'read_default_file': '/etc/mysql/my.cnf', # cnf file for mysql, could be in /etc/mysql/my.cnf
         # },
