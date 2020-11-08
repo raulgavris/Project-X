@@ -27,11 +27,11 @@ jobs:
         source: "."
         target: "/musichub"
 
-    - name: Executing remote command
+    - name: Run the build on the server
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
         USERNAME: ${{ secrets.USERNAME }}
         PORT: ${{ secrets.PORT }}
         KEY: ${{ secrets.SSHKEY }}
-        script: docker-compose -f musichub/docker-compose-production.yml up -d
+        script: docker-compose -f musichub/docker-compose-production.yml up -d --build
