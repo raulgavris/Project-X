@@ -27,15 +27,6 @@ jobs:
         source: "."
         target: "/musichub"
 
-    - name: Stop running containers because building the frontend takes all the memory we can afford
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        USERNAME: ${{ secrets.USERNAME }}
-        PORT: ${{ secrets.PORT }}
-        KEY: ${{ secrets.SSHKEY }}
-        script: docker-compose -f musichub/docker-compose-production.yml down
-
     - name: Run the build on the server
       uses: appleboy/ssh-action@master
       with:
@@ -43,4 +34,8 @@ jobs:
         USERNAME: ${{ secrets.USERNAME }}
         PORT: ${{ secrets.PORT }}
         KEY: ${{ secrets.SSHKEY }}
-        script: docker-compose -f musichub/docker-compose-production.yml up -d --build
+        script: docker-compose -f musichub/docker-compose-production.yml down && \
+                docker-compose -f musichub/docker-compose-production.yml up -d --build frontend && \
+                docker-compose -f musichub/docker-compose-production.yml up -d --build backend && \
+                docker-compose -f musichub/docker-compose-production.yml up -d --build db && \
+                docker-compose -f musichub/docker-compose-production.yml up -d --build nginx && \
