@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 version: '3.7'
 
 services:
@@ -53,4 +54,68 @@ services:
       - ./frontend/build:/var/www/frontend
     depends_on:
       - backend
+=======
+version: '3.7'
+
+services:
+
+  frontend:
+    container_name: fe
+    command: npm run build
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    volumes:
+      - './frontend:/frontend'
+      - '/frontend/node_modules'
+    ports:
+      - 5000:5000
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+
+  backend:
+    container_name: be
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    volumes:
+        - ./backend:/backend
+    ports:
+        - 8000:8000
+    env_file:
+        - ./backend/.env
+    depends_on:
+        - db
+
+  db:
+    container_name: db
+    image: mysql:8
+    restart: always
+    command:
+        - '--default-authentication-plugin=mysql_native_password'
+        - '--character-set-server=utf8'
+    ports:
+        - 3306:3306
+    expose:
+        - '3306'
+    volumes:
+        - ./backend/db:/var/lib/mysql
+    env_file:
+        - ./backend/.env
+
+  nginx:
+    command:
+      - "nginx -g 'daemon off;'"
+    image: nginx:latest
+    ports:
+      - 80:8080
+    expose:
+      - '80'
+      - '8080'
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./frontend/build:/var/www/frontend
+    depends_on:
+      - backend
+>>>>>>> Stashed changes
       - frontend

@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 docker-compose
 markdown
 pudb
@@ -11,4 +12,18 @@ django-filter
 django-dotenv
 django-cors-headers
 djangorestframework
+=======
+docker-compose
+markdown
+pudb
+ipython
+gunicorn
+mysqlclient
+django
+django-mysql
+django-filter
+django-dotenv
+django-cors-headers
+djangorestframework
+>>>>>>> Stashed changes
 djangorestframework_simplejwt
