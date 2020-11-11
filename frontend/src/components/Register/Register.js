@@ -62,55 +62,55 @@ class Register extends React.Component {
             )
         }
         return (
-            <div className="login-wrapper">
-            <div className="login">
+            <div className="register-wrapper">
+            <div className="register">
                 <Form onSubmit={this.handleSubmit}>
-                    <h1 className="contact-title-login">Register</h1>
-                    <FormGroup className="formgroup-login">
-                        <Label for="username" className="label-login">Username</Label>
-                        <FontAwesomeIcon className="icon-login" size="1x" icon={faUser} />
+                    <h1 className="contact-title-register">Register</h1>
+                    <FormGroup className="formgroup-register">
+                        <Label for="username" className="label-register">Username</Label>
+                        <FontAwesomeIcon className="icon-register" size="1x" icon={faUser} />
                         <Input
-                            className="input-login"
+                            className="input-register"
                             type="password"
                             name="username"
                             placeholder="username"
                             maxLength={20}
                             onChange={this.handleChange} />
                     </FormGroup>
-                    <FormGroup className="formgroup-login">
-                        <Label for="password" className="label-login">Password</Label>
-                        <FontAwesomeIcon className="icon-login" size="1x" icon={faLock} />
+                    <FormGroup className="formgroup-register">
+                        <Label for="password" className="label-register">Password</Label>
+                        <FontAwesomeIcon className="icon-register" size="1x" icon={faLock} />
                         <Input
-                            className="input-login"
+                            className="input-register"
                             type="password"
                             name="password"
                             placeholder="password"
                             maxLength={20}
                             onChange={this.handleChange} />
                     </FormGroup>
-                    <FormGroup className="formgroup-login">
-                        <Label for="firstname" className="label-login">First Name</Label>
-                        <FontAwesomeIcon className="icon-login" size="1x" icon={faLock} />
+                    <FormGroup className="formgroup-register">
+                        <Label for="firstname" className="label-register">First Name</Label>
+                        <FontAwesomeIcon className="icon-register" size="1x" icon={faLock} />
                         <Input
-                            className="input-login"
+                            className="input-register"
                             type="password"
                             name="firstname"
                             placeholder="firstname"
                             maxLength={20}
                             onChange={this.handleChange} />
                     </FormGroup>
-                    <FormGroup className="formgroup-login">
-                        <Label for="lastname" className="label-login">Last Name</Label>
-                        <FontAwesomeIcon className="icon-login" size="1x" icon={faLock} />
+                    <FormGroup className="formgroup-register">
+                        <Label for="lastname" className="label-register">Last Name</Label>
+                        <FontAwesomeIcon className="icon-register" size="1x" icon={faLock} />
                         <Input
-                            className="input-login"
+                            className="input-register"
                             type="password"
                             name="lastname"
                             placeholder="lastname"
                             maxLength={20}
                             onChange={this.handleChange} />
                     </FormGroup>
-                    <Button className="submit-login" onClick={()=>{
+                    <Button className="submit-register" onClick={()=>{
                         this.handleSubmit()
                     }}>REGISTER</Button>
                 </Form>
