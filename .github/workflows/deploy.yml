@@ -30,24 +30,6 @@ jobs:
         source: "."
         target: "/musichub"
 
-    - name: Build and deploy frontend
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        USERNAME: ${{ secrets.USERNAME }}
-        PORT: ${{ secrets.PORT }}
-        KEY: ${{ secrets.SSHKEY }}
-        script: docker-compose -f musichub/docker-compose-production.yml up -d --build frontend
-
-    - name: Build and deploy db
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        USERNAME: ${{ secrets.USERNAME }}
-        PORT: ${{ secrets.PORT }}
-        KEY: ${{ secrets.SSHKEY }}
-        script: docker-compose -f musichub/docker-compose-production.yml up -d --build db
-
     - name: Build and deploy backend
       uses: appleboy/ssh-action@master
       with:
@@ -55,13 +37,9 @@ jobs:
         USERNAME: ${{ secrets.USERNAME }}
         PORT: ${{ secrets.PORT }}
         KEY: ${{ secrets.SSHKEY }}
-        script: docker-compose -f musichub/docker-compose-production.yml up -d --build backend
-
-    - name: Build and deploy nginx
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        USERNAME: ${{ secrets.USERNAME }}
-        PORT: ${{ secrets.PORT }}
-        KEY: ${{ secrets.SSHKEY }}
-        script: docker-compose -f musichub/docker-compose-production.yml up -d --build nginx
+        script:
+          docker-compose -f musichub/docker-compose-production.yml down &&
+          docker-compose -f musichub/docker-compose-production.yml up -d --build frontend &&
+          docker-compose -f musichub/docker-compose-production.yml up -d --build db &&
+          docker-compose -f musichub/docker-compose-production.yml up -d --build backend &&
+          docker-compose -f musichub/docker-compose-production.yml up -d --build nginx
