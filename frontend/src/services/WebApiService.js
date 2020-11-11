@@ -9,7 +9,9 @@ const WebApiService = {};
 WebApiService.getHelloWorld = () => client.get('/hello_world/');
 WebApiService.postHelloWorld = (payload) => client.post('hello_world/', payload);
 
-// portfolioApi.postToken = (payload) => client.post('/token/obtain/', payload);
-// portfolioApi.postBlackList = (payload) => client.post('/blacklist/', payload);
+WebApiService.postToken = (payload) => client.post('/token/', payload);
+WebApiService.register = (payload) => client.post('/register/', payload);
+WebApiService.postBlackList = (payload) => client.post('/blacklist/', payload);
+
 
 export default WebApiService;
