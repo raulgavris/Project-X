@@ -1,7 +1,10 @@
 import axios from 'axios';
 
 // Default API will be your root
-const API_ROOT = process.env.URL || 'http://127.0.0.1:8000/api/';
+
+// const API_ROOT = process.env.URL || 'http://0.0.0.0:8000/api/';
+const API_ROOT = process.env.URL || 'http://46.101.186.67/api/';
+
 const TIMEOUT = 5000;
 const HEADERS = {
   'Content-Type': 'application/json',
@@ -20,7 +23,7 @@ class ApiService {
 
     this.client = client;
     this.post = this.post.bind(this);
-    this.handleSuccess = this.handleSuccess.bind(this) 
+    this.handleSuccess = this.handleSuccess.bind(this)
     this.handleError = this.handleError.bind(this);
     client.interceptors.response.use(this.handleSuccess, this.handleError);
   }
@@ -52,10 +55,10 @@ class ApiService {
         if (tokenParts.exp > now) {
           return this.client.post('/token/refresh/', {refresh: refreshToken})
                   .then((response) => {
-        
+
                     sessionStorage.setItem('access_token', response.data.access);
                     sessionStorage.setItem('refresh_token', response.data.refresh);
-        
+
                     this.client.defaults.headers['Authorization'] = "JWT " + response.data.access;
                     originalRequest.headers['Authorization'] = "JWT " + response.data.access;
 
@@ -73,7 +76,7 @@ class ApiService {
         window.location.href = '/admin-login/';
       }
     }
-    
+
     // specific error handling done elsewhere
     return Promise.reject(error);
   }
