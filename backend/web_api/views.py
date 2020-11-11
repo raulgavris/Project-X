@@ -4,7 +4,7 @@ from rest_framework import permissions
 from rest_framework.generics import ListAPIView, GenericAPIView
 from rest_framework.response import Response
 
-from web_api.models import HelloWorld
+from web_api.models import HelloWorld, Song
 from web_api.serializers import HelloWorldSerializer, UserSerializer, RegisterSerializer
 
 
@@ -36,3 +36,15 @@ class RegisterApi(GenericAPIView):
                 context=self.get_serializer_context()).data,
             "message": "You're in the mainframe!",
         })
+
+class SongView(ListAPIView):
+    permission_classes = (permissions.AllowAny,)
+    authentication_classes = ()
+
+    queryset = Song.objects.all()
+    serializer_class = SongSerializer
+
+    
+    # def post(self, request):
+        # will complete when making the frontend part of this,
+        # not sure what the post req should look like now.
