@@ -1,8 +1,10 @@
 import axios from 'axios';
 
 // Default API will be your root
+
 // const API_ROOT = process.env.URL || 'http://0.0.0.0:8000/api/';
 const API_ROOT = process.env.URL || 'http://46.101.186.67/api/';
+
 const TIMEOUT = 5000;
 const HEADERS = {
   'Content-Type': 'application/json',

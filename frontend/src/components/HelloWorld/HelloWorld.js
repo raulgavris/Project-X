@@ -22,6 +22,7 @@ class HelloWorld extends React.Component {
     componentDidMount() {
         this.props.getHelloWorldDispatch();
         setTimeout(() => {
+            console.log(this.props)
             this.setState({
                 loaded: this.props.loaded,
                 count: this.props.helloWorld.count,
