@@ -10,7 +10,7 @@ const WebApiService = {};
 WebApiService.getHelloWorld = () => client.get('/hello_world/');
 WebApiService.postHelloWorld = (payload) => client.post('hello_world/', payload);
 
-WebApiService.getSongs = () => client.get('/songs/');
+WebApiService.getSongList = () => client.get('/songs/');
 // to complete post request for songs
 
 // portfolioApi.postToken = (payload) => client.post('/token/obtain/', payload);

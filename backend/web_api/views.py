@@ -5,7 +5,7 @@ from rest_framework.generics import ListAPIView, GenericAPIView
 from rest_framework.response import Response
 
 from web_api.models import HelloWorld, Song
-from web_api.serializers import HelloWorldSerializer, UserSerializer, RegisterSerializer
+from web_api.serializers import HelloWorldSerializer, UserSerializer, RegisterSerializer, SongSerializer
 
 
 class HelloWorldView(ListAPIView):
