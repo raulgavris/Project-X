@@ -50,18 +50,18 @@ class LandingPage extends React.Component {
         }
 
         return (
-            <div>
-                <navbar>
-                    <div>Logo</div>
-                    <ul>
-                        <li><Link to='/download'>DOWNLOAD</Link></li>
-                        <li><Link to='/about'>ABOUT</Link></li>
-                        <li><Link onClick={()=>{
+            <div className="landing-page">
+                <navbar className="navigation-bar">
+                    <div className="logo">Logo</div>
+                    <ul className="ul-links-wrapper">
+                        <li className="li-links-wrapper"><Link to='/download'>DOWNLOAD</Link></li>
+                        <li className="li-links-wrapper"><Link to='/about'>ABOUT</Link></li>
+                        <li className="li-links-wrapper"><Link onClick={()=>{
                             this.setState({
                                 shouldRender: 'register'
                             })
                         }}>REGISTER</Link></li>
-                        <li><Link onClick={()=>{
+                        <li className="li-links-wrapper"><Link onClick={()=>{
                             this.setState({
                                 shouldRender: 'login'
                             })
@@ -69,14 +69,17 @@ class LandingPage extends React.Component {
                     </ul>
                 </navbar>
 
-                <div>Connecting People Through Music</div>
+                <div className="header">
+                    Connecting People Through Music
+                    {this.state.shouldRender === 'login' &&
+                        <Login />
+                    }
+                    {this.state.shouldRender === 'register' &&
+                        <Register />
+                    }
+                </div>
 
-                {this.state.shouldRender === 'login' &&
-                    <Login />
-                }
-                {this.state.shouldRender === 'register' &&
-                    <Register />
-                }
+                
             </div>
         );
     };

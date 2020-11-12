@@ -60,29 +60,27 @@ class Login extends React.Component {
             )
         }
         return (
-            <div className="login-wrapper">
+        <div className="login-wrapper">
             <div className="login">
                 <Form onSubmit={this.handleSubmit}>
                     <h1 className="contact-title-login">Log In</h1>
                     <FormGroup className="formgroup-login">
-                        <Label for="username" className="label-login">Username</Label>
                         <FontAwesomeIcon className="icon-login" size="1x" icon={faUser} />
                         <Input
                             className="input-login"
-                            type="password"
+                            // type="password"
                             name="username"
-                            placeholder="username"
+                            placeholder="Username"
                             maxLength={20}
                             onChange={this.handleChange} />
                     </FormGroup>
                     <FormGroup className="formgroup-login">
-                        <Label for="password" className="label-login">Password</Label>
                         <FontAwesomeIcon className="icon-login" size="1x" icon={faLock} />
                         <Input
                             className="input-login"
                             type="password"
                             name="password"
-                            placeholder="password"
+                            placeholder="Password"
                             maxLength={20}
                             onChange={this.handleChange} />
                     </FormGroup>
@@ -90,6 +88,8 @@ class Login extends React.Component {
                         this.handleSubmit()
                     }}>LOG IN</Button>
                 </Form>
+                <div className="policy">By continuing, you agree to accept our Privacy Policy & Terms of Service</div>
+                <div className="suggest-register">You don't have an account? REGISTER</div>
             </div>
         </div>
         );

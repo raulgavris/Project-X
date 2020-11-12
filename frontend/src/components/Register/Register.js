@@ -67,46 +67,35 @@ class Register extends React.Component {
                 <Form onSubmit={this.handleSubmit}>
                     <h1 className="contact-title-register">Register</h1>
                     <FormGroup className="formgroup-register">
-                        <Label for="username" className="label-register">Username</Label>
-                        <FontAwesomeIcon className="icon-register" size="1x" icon={faUser} />
                         <Input
                             className="input-register"
-                            type="password"
                             name="username"
-                            placeholder="username"
+                            placeholder="Username"
                             maxLength={20}
                             onChange={this.handleChange} />
                     </FormGroup>
                     <FormGroup className="formgroup-register">
-                        <Label for="password" className="label-register">Password</Label>
-                        <FontAwesomeIcon className="icon-register" size="1x" icon={faLock} />
                         <Input
                             className="input-register"
                             type="password"
                             name="password"
-                            placeholder="password"
+                            placeholder="Password"
                             maxLength={20}
                             onChange={this.handleChange} />
                     </FormGroup>
                     <FormGroup className="formgroup-register">
-                        <Label for="firstname" className="label-register">First Name</Label>
-                        <FontAwesomeIcon className="icon-register" size="1x" icon={faLock} />
                         <Input
                             className="input-register"
-                            type="password"
                             name="firstname"
-                            placeholder="firstname"
+                            placeholder="First Name"
                             maxLength={20}
                             onChange={this.handleChange} />
                     </FormGroup>
                     <FormGroup className="formgroup-register">
-                        <Label for="lastname" className="label-register">Last Name</Label>
-                        <FontAwesomeIcon className="icon-register" size="1x" icon={faLock} />
                         <Input
                             className="input-register"
-                            type="password"
                             name="lastname"
-                            placeholder="lastname"
+                            placeholder="Last Name"
                             maxLength={20}
                             onChange={this.handleChange} />
                     </FormGroup>
@@ -114,6 +103,8 @@ class Register extends React.Component {
                         this.handleSubmit()
                     }}>REGISTER</Button>
                 </Form>
+                <div className="policy">By continuing, you agree to accept our Privacy Policy & Terms of Service</div>
+                <div className="suggest-login">Already have an account? LOG IN</div>
             </div>
         </div>
         );

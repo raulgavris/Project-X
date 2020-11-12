@@ -1,0 +1,64 @@
+Form {
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+}
+
+.register-wrapper {
+    text-align: center;
+    .register {
+        .title-register {
+            margin-bottom: 10%;
+            font-size: 40px;
+        }
+        .formgroup-register {
+            width : 500px;
+            background: transparent;
+            border: none;
+            outline: none;
+            font-size: 25px;
+            margin-bottom: 20px;
+            .label-register {
+                margin-right: 10px;
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                justify-content: center;
+                margin-bottom: 3%;
+            }
+            .input-register {
+                width: 300px;
+                height: 25px;
+                background: transparent;
+                border: none;
+                outline: none;
+                border-bottom: 2px solid black;
+                resize: none;
+                font-size: 20px;
+                color: black;
+            }
+        }
+        .submit-register {
+            width: 60%;
+            height: 45px;
+            border-radius: 15px;
+            color: white;
+            background: black;
+            border-color: black;
+            font-weight: bold;
+        }
+    }
+    .policy {
+        margin-top: 15px;
+        font-size: 10px;
+        width: 30%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .suggest-login {
+        font-weight: bold;
+        font-size: 12px;
+        margin-top: 10px;
+    }
+}

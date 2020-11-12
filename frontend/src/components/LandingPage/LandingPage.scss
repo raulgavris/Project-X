@@ -1,0 +1,55 @@
+.navigation-bar {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position-y: 20%;
+    background-image: url('./assets/navbar.jpg');
+    height: 120px;
+    display: flex;
+    flex-direction: row;
+    color: white;
+    .logo {
+        flex: 0.9;
+    }
+    .ul-links-wrapper {
+        display: flex;
+        list-style-type: none;
+        .li-links-wrapper {
+            margin-right: 25px;
+            Link {
+            }
+        }
+    }
+}
+
+.header {
+    font-weight: bold;
+    font-size: 45px;
+    text-align: center;
+
+}
+
+a:hover, a:visited, a:link, a:active {
+    text-decoration: none;
+    color: white;
+}
+
+.landing-page {
+    position: absolute;
+    background-image: url('./assets/background.jpg');
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.login-wrapper {
+    position: absolute;
+    right: 50px;
+}
+
+.register-wrapper {
+    position: absolute;
+    right: 50px;
+}
