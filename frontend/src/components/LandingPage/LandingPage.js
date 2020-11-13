@@ -5,6 +5,10 @@ import { connect } from 'react-redux';
 
 import { getHelloWorldRequest, postHelloWorldRequest } from '../../redux';
 
+import Register from '../Register';
+import Login from '../Login';
+
+
 import styles from '../../styles/variables.scss';
 
 import './LandingPage.scss';
@@ -15,7 +19,7 @@ class LandingPage extends React.Component {
         super(props);
         this.state = {
             loaded: false,
-            count: '',
+            shouldRender: '',
         };
     }
 
@@ -25,16 +29,9 @@ class LandingPage extends React.Component {
             this.setState({
                 loaded: this.props.loaded,
                 count: this.props.helloWorld.count,
+                shouldRender: '',
             })
         }, 500);
-    }
-
-    handleSubmit() {
-        let id = this.props.helloWorld.id;
-        this.props.helloWorld.count += 1;
-        let count = this.props.helloWorld.count;
-        this.props.postHelloWorldDispatch({id: id, count: count});
-        this.setState({count: count})
     }
 
     render() {
@@ -51,14 +48,38 @@ class LandingPage extends React.Component {
                 />
             )
         }
+
         return (
-            <div>
-                <h1>Hello {this.props.helloWorld.hello}!</h1>
-                <h1>You have {this.props.helloWorld.count} likes!</h1>
-                <button onClick={()=>{
-                    this.handleSubmit();
-                }}>Increase likes!</button>
-                <Link to="/hello_world">To helloWorld page!</Link>
+            <div className="landing-page">
+                <navbar className="navigation-bar">
+                    <div className="logo">Logo</div>
+                    <ul className="ul-links-wrapper">
+                        <li className="li-links-wrapper"><Link to='/download'>DOWNLOAD</Link></li>
+                        <li className="li-links-wrapper"><Link to='/about'>ABOUT</Link></li>
+                        <li className="li-links-wrapper"><Link onClick={()=>{
+                            this.setState({
+                                shouldRender: 'register'
+                            })
+                        }}>REGISTER</Link></li>
+                        <li className="li-links-wrapper"><Link onClick={()=>{
+                            this.setState({
+                                shouldRender: 'login'
+                            })
+                        }}>LOG IN</Link></li>
+                    </ul>
+                </navbar>
+
+                <div className="header">
+                    Connecting People Through Music
+                    {this.state.shouldRender === 'login' &&
+                        <Login />
+                    }
+                    {this.state.shouldRender === 'register' &&
+                        <Register />
+                    }
+                </div>
+
+                
             </div>
         );
     };

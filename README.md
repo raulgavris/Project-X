@@ -1,4 +1,5 @@
-[![GitHub contributors](https://img.shields.io/github/contributors/cdnjs/cdnjs.svg?style=flat)]()
+[![GitHub contributors](https://img.shields.io/badge/contributors-8-green?style=for-the-badge)]()
+
 
 # MusicHub
 

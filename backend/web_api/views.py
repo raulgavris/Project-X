@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from rest_framework import permissions
 from rest_framework.generics import ListAPIView, GenericAPIView
 from rest_framework.response import Response
+from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework.views import APIView
 
 from web_api.models import HelloWorld, Song
 from web_api.serializers import HelloWorldSerializer, UserSerializer, RegisterSerializer, SongSerializer
@@ -48,3 +50,16 @@ class SongView(ListAPIView):
     # def post(self, request):
         # will complete when making the frontend part of this,
         # not sure what the post req should look like now.
+
+class LogoutAndBlacklistRefreshTokenForUserView(APIView):
+    permission_classes = (permissions.AllowAny,)
+    authentication_classes = ()
+
+    def post(self, request):
+        try:
+            refresh_token = request.data["refresh_token"]
+            token = RefreshToken(refresh_token)
+            token.blacklist()
+            return Response(status=205)
+        except Exception as e:
+            return Response(status=400)
