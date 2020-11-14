@@ -16,7 +16,7 @@ const SongListReducer = (state = initialState, action) => {
         };
         case GET_SONG_LIST_SUCCESS: return {
             ...state,
-            song_list_get: { ...action.payload, loaded: true },
+            song_list_get: [ ...action.payload] , loaded: true ,
             error: '',
         };
         case GET_SONG_LIST_FAILURE: return {

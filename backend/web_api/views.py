@@ -6,21 +6,8 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.views import APIView
 
-from web_api.models import HelloWorld, Song
-from web_api.serializers import HelloWorldSerializer, UserSerializer, RegisterSerializer, SongSerializer
-
-
-class HelloWorldView(ListAPIView):
-    permission_classes = (permissions.AllowAny,)
-    authentication_classes = ()
-
-    queryset = HelloWorld.objects.all()
-    serializer_class = HelloWorldSerializer
-
-    def post(self, request):
-        cursor = connection.cursor()
-        cursor.execute(f"UPDATE hello_world SET count={request.data['count']} WHERE id={request.data['id']}")
-        return Response({'SUCCESS': 'Count was incremented'}, status=200)
+from web_api.models import  Song
+from web_api.serializers import  UserSerializer, RegisterSerializer, SongSerializer
 
 
 class RegisterApi(GenericAPIView):

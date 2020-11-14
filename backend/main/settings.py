@@ -86,7 +86,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': os.environ.get('MYSQL_DATABASE', 'musichub'),
-        'USER': os.environ.get('MYSQL_USER', 'root'),
+        'USER': os.environ.get('MYSQL_USER', 'andreea'),
         'PASSWORD': os.environ.get('MYSQL_PASSWORD', 'password'),
         'HOST': os.environ.get('MYSQL_HOST', '127.0.0.1'),
         'PORT': os.environ.get('DB_PORT', 3306),

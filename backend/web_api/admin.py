@@ -1,9 +1,8 @@
 from django.contrib import admin
 
-from web_api.models import HelloWorld, Song
+from web_api.models import Song
 
 
 # Register your models here.
 
-admin.site.register(HelloWorld)
 admin.site.register(Song)

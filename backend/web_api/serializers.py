@@ -5,7 +5,7 @@ from django.contrib.auth.hashers import make_password
 from rest_framework import serializers
 from rest_framework.permissions import IsAuthenticated
 
-from web_api.models import HelloWorld, Song
+from web_api.models import Song
 
 
 class RegisterSerializer(serializers.ModelSerializer):
@@ -30,12 +30,6 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = '__all__'
-
-
-class HelloWorldSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = HelloWorld
-        fields = ('id', 'hello', 'count')
 
 class SongSerializer(serializers.ModelSerializer):
     class Meta:

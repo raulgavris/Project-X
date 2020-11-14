@@ -1,24 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Form, FormGroup, Input, Label, Button } from 'reactstrap';
-import { Link, withRouter } from 'react-router-dom';
+import { Form, FormGroup, Input, Button } from 'reactstrap';
+import { withRouter } from 'react-router-dom';
 import LoadingScreen from 'react-loading-screen';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faLock } from "@fortawesome/free-solid-svg-icons"
-import { faUser } from "@fortawesome/free-solid-svg-icons"
 
-import { getHelloWorldRequest, postRegisterRequest } from '../../redux';
+import { postRegisterRequest } from '../../redux';
 
 import styles from '../../styles/variables.scss';
 
 import './Register.scss';
-
+import NavigationBar from '../NavigationBar'
 
 class Register extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            loaded: false,
+            loaded: true,
             username: '',
             password: '',
             firstname: '',
@@ -30,11 +27,9 @@ class Register extends React.Component {
     }
 
     componentDidMount() {
-        this.props.getHelloWorldDispatch();
         setTimeout(() => {
             this.setState({
-                loaded: this.props.loaded,
-                count: this.props.helloWorld.count,
+                loaded: true,
             })
         }, 500);
     }
@@ -62,49 +57,54 @@ class Register extends React.Component {
             )
         }
         return (
-            <div className="register-wrapper">
-            <div className="register">
-                <Form onSubmit={this.handleSubmit}>
-                    <h1 className="contact-title-register">Register</h1>
-                    <FormGroup className="formgroup-register">
-                        <Input
-                            className="input-register"
-                            name="username"
-                            placeholder="Username"
-                            maxLength={20}
-                            onChange={this.handleChange} />
-                    </FormGroup>
-                    <FormGroup className="formgroup-register">
-                        <Input
-                            className="input-register"
-                            type="password"
-                            name="password"
-                            placeholder="Password"
-                            maxLength={20}
-                            onChange={this.handleChange} />
-                    </FormGroup>
-                    <FormGroup className="formgroup-register">
-                        <Input
-                            className="input-register"
-                            name="firstname"
-                            placeholder="First Name"
-                            maxLength={20}
-                            onChange={this.handleChange} />
-                    </FormGroup>
-                    <FormGroup className="formgroup-register">
-                        <Input
-                            className="input-register"
-                            name="lastname"
-                            placeholder="Last Name"
-                            maxLength={20}
-                            onChange={this.handleChange} />
-                    </FormGroup>
-                    <Button className="submit-register" onClick={()=>{
-                        this.handleSubmit()
-                    }}>REGISTER</Button>
-                </Form>
-                <div className="policy">By continuing, you agree to accept our Privacy Policy & Terms of Service</div>
-                <div className="suggest-login">Already have an account? LOG IN</div>
+            <div className="register_page"> 
+                <NavigationBar />
+                <div className="header">
+                    <div className="register-wrapper">
+                    <div className="register">
+                        <Form onSubmit={this.handleSubmit}>
+                            <h1 className="contact-title-register">Register</h1>
+                            <FormGroup className="formgroup-register">
+                                <Input
+                                    className="input-register"
+                                    name="username"
+                                    placeholder="Username"
+                                    maxLength={20}
+                                    onChange={this.handleChange} />
+                            </FormGroup>
+                            <FormGroup className="formgroup-register">
+                                <Input
+                                    className="input-register"
+                                    type="password"
+                                    name="password"
+                                    placeholder="Password"
+                                    maxLength={20}
+                                    onChange={this.handleChange} />
+                            </FormGroup>
+                            <FormGroup className="formgroup-register">
+                                <Input
+                                    className="input-register"
+                                    name="firstname"
+                                    placeholder="First Name"
+                                    maxLength={20}
+                                    onChange={this.handleChange} />
+                            </FormGroup>
+                            <FormGroup className="formgroup-register">
+                                <Input
+                                    className="input-register"
+                                    name="lastname"
+                                    placeholder="Last Name"
+                                    maxLength={20}
+                                    onChange={this.handleChange} />
+                            </FormGroup>
+                            <Button className="submit-register" onClick={()=>{
+                                this.handleSubmit()
+                            }}>REGISTER</Button>
+                        </Form>
+                        <div className="policy">By continuing, you agree to accept our Privacy Policy & Terms of Service</div>
+                        <div className="suggest-login">Already have an account? LOG IN</div>
+                    </div>
+                </div>
             </div>
         </div>
         );
@@ -113,13 +113,12 @@ class Register extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        helloWorld: state.helloWorldReducer.hello,
+        
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        getHelloWorldDispatch: () => dispatch(getHelloWorldRequest()),
         postRegisterRequest: () => dispatch(postRegisterRequest()),
         dispatch
     };
