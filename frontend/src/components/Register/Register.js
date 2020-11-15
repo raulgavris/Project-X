@@ -51,8 +51,8 @@ class Register extends React.Component {
                     bgColor={styles.color1}
                     spinnerColor={styles.color2}
                     textColor={styles.color4}
-                    logoSrc='https://raw.githubusercontent.com/gavrisraul/website-portfolio/master/frontend/assets/loading.png'
-                    text='Loading...'
+                    logoSrc='frontend/src/components/NavigationBar/assets/favicon.ico'
+                    text='Loading Music Hub'
                     children=''
                 />
             )
@@ -60,7 +60,7 @@ class Register extends React.Component {
         return (
             <div className="register_page">
                 <NavigationBar />
-                <div className="header">
+                <div className="header">Connecting People Through Music
                     <div className="register-wrapper">
                     <div className="register">
                         <Form onSubmit={this.handleSubmit}>

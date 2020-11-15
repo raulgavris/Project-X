@@ -51,8 +51,8 @@ class Login extends React.Component {
                     bgColor={styles.color1}
                     spinnerColor={styles.color2}
                     textColor={styles.color4}
-                    logoSrc='https://raw.githubusercontent.com/gavrisraul/website-portfolio/master/frontend/assets/loading.png'
-                    text='Loading...'
+                    logoSrc=''
+                    text='Loading Music Hub'
                     children=''
                 />
             )
@@ -83,9 +83,9 @@ class Login extends React.Component {
                                     maxLength={20}
                                     onChange={this.handleChange} />
                             </FormGroup>
-                            <Button className="submit-login" onClick={()=>{
+                            <Link to='/song_list'><Button className="submit-login" onClick={()=>{
                                 this.handleSubmit()
-                            }}><Link to='/song_list'>LOG IN</Link></Button>
+                            }}>LOG IN</Button></Link>
                         </Form>
                         <div className="policy">By continuing, you agree to accept our Privacy Policy & Terms of Service</div>
                         <div className="suggest-register">You don't have an account? <Link to='/register' class="inside-link">Register</Link></div>

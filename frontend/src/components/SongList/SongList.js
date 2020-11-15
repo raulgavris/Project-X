@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 
 import './SongList.scss';
 import NavigationBar from '../NavigationBar';
+import logo from './assets/Logo.png';
 
 class SongList extends React.Component{
     constructor(props){
@@ -37,9 +38,9 @@ class SongList extends React.Component{
             )
         }
         return (
-                <div>
+                <div className = "song-list">
                 <navbar className="navigation-bar">
-                    <div className="logo">Logo</div>
+                    <div className="logo"><Link to='/'> <img src={logo} alt="Logo" /></Link></div>
                     <ul className="ul-links-wrapper">
                         <li className="li-links-wrapper"><Link to='/'>HOME</Link></li>
                         <li className="li-links-wrapper"><Link to='/song_list'>CONNECT</Link></li>

@@ -27,8 +27,8 @@ class LandingPage extends React.Component {
                     bgColor={styles.color1}
                     spinnerColor={styles.color2}
                     textColor={styles.color4}
-                    logoSrc='https://raw.githubusercontent.com/gavrisraul/website-portfolio/master/frontend/assets/loading.png'
-                    text='Loading...'
+                    logoSrc='./assets/loadingscreen.jpg'
+                    text='Test...'
                     children=''
                 />
             )

@@ -1,7 +1,8 @@
 
 .header {
     font-weight: bold;
-    font-size: 45px;
+    font-size: 50px;
+    margin-top: 109px;
     text-align: center;
 
 }
@@ -23,10 +24,14 @@ a:hover, a:visited, a:link, a:active {
 
 .login-wrapper {
     position: absolute;
+    top: 360px;
     right: 50px;
+    font-size:25px ;
 }
 
 .register-wrapper {
     position: absolute;
     right: 50px;
+    top: 360px;
+    font-size: 25px;
 }
