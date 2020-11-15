@@ -46,6 +46,7 @@ class SongList extends React.Component{
                         {/* <li className="li-links-wrapper"><Link to='/about'>ABOUT</Link></li> */}
                         {/* <li className="li-links-wrapper"><Link to='/login'>LOGIN</Link></li> */}
                         <li className="li-links-wrapper">Majeri Robert</li>
+                        <li className="li-links-wrapper"><Link to='/'>log out</Link></li>
                     </ul>
                 </navbar>
                 <h1> Connect with someone </h1>
