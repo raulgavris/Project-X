@@ -57,10 +57,14 @@ jobs:
   frontend-linter:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: stefanoeb/eslint-action@1.0.2
-        with:
-          files: src/
+    - uses: actions/checkout@v2
+    - name: Use Node.js 6.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 6.x
+    - uses: actions/checkout@v2
+    - run: npm install -g eslint
+    - run: cd frontend && eslint --max-warnings 1 src
 
   frontend-tests:
     runs-on: ubuntu-latest
