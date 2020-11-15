@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Form, FormGroup, Input, Button } from 'reactstrap';
 import { withRouter } from 'react-router-dom';
 import LoadingScreen from 'react-loading-screen';
+import { Link } from 'react-router-dom';
 
 import { postRegisterRequest } from '../../redux';
 
@@ -57,7 +58,7 @@ class Register extends React.Component {
             )
         }
         return (
-            <div className="register_page"> 
+            <div className="register_page">
                 <NavigationBar />
                 <div className="header">
                     <div className="register-wrapper">
@@ -102,7 +103,7 @@ class Register extends React.Component {
                             }}>REGISTER</Button>
                         </Form>
                         <div className="policy">By continuing, you agree to accept our Privacy Policy & Terms of Service</div>
-                        <div className="suggest-login">Already have an account? LOG IN</div>
+                        <div className="suggest-login">Already have an account? <Link to='/login' class="inside-link">Login</Link></div>
                     </div>
                 </div>
             </div>
@@ -113,7 +114,7 @@ class Register extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        
+
     };
 };
 

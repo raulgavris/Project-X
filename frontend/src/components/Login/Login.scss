@@ -15,6 +15,11 @@
 
 }
 
+a:hover, a:visited, a:link, a:active {
+    text-decoration: none;
+    color: white;
+}
+
 
 Form {
     width: 500px;
@@ -75,8 +80,16 @@ Form {
         margin-right: auto;
     }
     .suggest-register {
+        color: black;
         font-weight: bold;
         font-size: 12px;
         margin-top: 10px;
     }
+
+}
+
+
+.inside-link:hover, .inside-link:visited, .inside-link:link, .inside-link:active {
+    text-decoration: none;
+    color: black;
 }
