@@ -1,17 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Form, FormGroup, Input, Label, Button } from 'reactstrap';
-import { Link, withRouter } from 'react-router-dom';
+import { Form, FormGroup, Input, Button } from 'reactstrap';
+import {  withRouter } from 'react-router-dom';
 import LoadingScreen from 'react-loading-screen';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faLock } from "@fortawesome/free-solid-svg-icons"
-import { faUser } from "@fortawesome/free-solid-svg-icons"
+import { Link } from 'react-router-dom';
 
-import { getHelloWorldRequest, postTokenRequest } from '../../redux';
+import {  postTokenRequest } from '../../redux';
 
 import styles from '../../styles/variables.scss';
 
 import './Login.scss';
+import NavigationBar from '../NavigationBar'
 
 
 class Login extends React.Component {
@@ -28,11 +27,10 @@ class Login extends React.Component {
     }
 
     componentDidMount() {
-        this.props.getHelloWorldDispatch();
+
         setTimeout(() => {
             this.setState({
-                loaded: this.props.loaded,
-                count: this.props.helloWorld.count,
+                loaded: true,
             })
         }, 500);
     }
@@ -53,43 +51,46 @@ class Login extends React.Component {
                     bgColor={styles.color1}
                     spinnerColor={styles.color2}
                     textColor={styles.color4}
-                    logoSrc='https://raw.githubusercontent.com/gavrisraul/website-portfolio/master/frontend/assets/loading.png'
-                    text='Loading...'
+                    logoSrc=''
+                    text='Loading Music Hub'
                     children=''
                 />
             )
         }
         return (
-        <div className="login-wrapper">
-            <div className="login">
-                <Form onSubmit={this.handleSubmit}>
-                    <h1 className="contact-title-login">Log In</h1>
-                    <FormGroup className="formgroup-login">
-                        <FontAwesomeIcon className="icon-login" size="1x" icon={faUser} />
-                        <Input
-                            className="input-login"
-                            // type="password"
-                            name="username"
-                            placeholder="Username"
-                            maxLength={20}
-                            onChange={this.handleChange} />
-                    </FormGroup>
-                    <FormGroup className="formgroup-login">
-                        <FontAwesomeIcon className="icon-login" size="1x" icon={faLock} />
-                        <Input
-                            className="input-login"
-                            type="password"
-                            name="password"
-                            placeholder="Password"
-                            maxLength={20}
-                            onChange={this.handleChange} />
-                    </FormGroup>
-                    <Button className="submit-login" onClick={()=>{
-                        this.handleSubmit()
-                    }}>LOG IN</Button>
-                </Form>
-                <div className="policy">By continuing, you agree to accept our Privacy Policy & Terms of Service</div>
-                <div className="suggest-register">You don't have an account? REGISTER</div>
+        <div className='login_page'>
+            <NavigationBar/>
+            <div className="header">
+                Connecting People Through Music
+                <div className="login-wrapper">
+                    <div className="login">
+                        <Form onSubmit={this.handleSubmit}>
+                            <h1 className="contact-title-login">Log In</h1>
+                            <FormGroup className="formgroup-login">
+                                <Input
+                                    className="input-login"
+                                    name="username"
+                                    placeholder="Username"
+                                    maxLength={20}
+                                    onChange={this.handleChange} />
+                            </FormGroup>
+                            <FormGroup className="formgroup-login">
+                                <Input
+                                    className="input-login"
+                                    type="password"
+                                    name="password"
+                                    placeholder="Password"
+                                    maxLength={20}
+                                    onChange={this.handleChange} />
+                            </FormGroup>
+                            <Link to='/song_list'><Button className="submit-login" onClick={()=>{
+                                this.handleSubmit()
+                            }}>LOG IN</Button></Link>
+                        </Form>
+                        <div className="policy">By continuing, you agree to accept our Privacy Policy & Terms of Service</div>
+                        <div className="suggest-register">You don't have an account? <Link to='/register' class="inside-link">Register</Link></div>
+                    </div>
+                </div>
             </div>
         </div>
         );
@@ -98,15 +99,13 @@ class Login extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        helloWorld: state.helloWorldReducer.hello,
         access: state.loginReducer.access,
-        refresh: state.loginReducer.refresh 
+        refresh: state.loginReducer.refresh
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        getHelloWorldDispatch: () => dispatch(getHelloWorldRequest()),
         postTokenRequest: () => dispatch(postTokenRequest()),
         dispatch
     };

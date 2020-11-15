@@ -1,3 +1,26 @@
+.login_page {
+    position: absolute;
+    background-image: url('./assets/background.jpg');
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.header {
+    font-weight: bold;
+    font-size: 45px;
+    text-align: center;
+
+}
+
+a:hover, a:visited, a:link, a:active {
+    text-decoration: none;
+    color: white;
+}
+
+
 Form {
     width: 500px;
     margin-left: auto;
@@ -57,8 +80,16 @@ Form {
         margin-right: auto;
     }
     .suggest-register {
+        color: black;
         font-weight: bold;
         font-size: 12px;
         margin-top: 10px;
     }
+
+}
+
+
+.inside-link:hover, .inside-link:visited, .inside-link:link, .inside-link:active {
+    text-decoration: none;
+    color: black;
 }

@@ -9,18 +9,17 @@ class UserLocation(models.Model):
     lng = models.IntegerField()
 
 
-
-from django.db import models
-
-
-class HelloWorld(models.Model):
+class Song(models.Model):
     id = models.IntegerField(primary_key=True)
-    hello = models.CharField(max_length=10)
-    count = models.IntegerField()
+    title = models.CharField(max_length=50)
+    artist= models.CharField(max_length=50)
+    user_name = models.CharField(max_length=20)
+    user_location = models.CharField(max_length=20)
 
     def __str__(self):
-        return self.hello
+        return self.title + "-" + self.artist
+
 
     class Meta:
-        db_table = 'hello_world'
-        app_label= 'web_api'
+        db_table='song'
+        app_label = 'web_api'
