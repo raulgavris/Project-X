@@ -16,7 +16,7 @@ on:
 
 
 jobs:
-  flake8:
+  backend-linter:
     runs-on: ubuntu-latest
     steps:
 
@@ -34,10 +34,9 @@ jobs:
           pip install flake8
 
       - name: Lint with flake8
-        run: flake8 backend/
+        run: flake8 --max-line-length 120 backend/
 
-# With no caching at all the entire ci process takes 4m 30s to complete!
-  pytest:
+  backend-tests:
     runs-on: ubuntu-latest
     steps:
 
@@ -54,3 +53,23 @@ jobs:
 
       - name: Run Django Tests
         run:  docker-compose -f docker-compose-local.yml run --rm backend python manage.py test
+
+  frontend-linter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: stefanoeb/eslint-action@1.0.2
+        with:
+          files: src/
+
+  frontend-tests:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js 6.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 6.x
+    - uses: actions/checkout@v2
+    - run: npm install
+    - run: npm test
