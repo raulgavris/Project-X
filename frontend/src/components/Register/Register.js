@@ -100,7 +100,7 @@ class Register extends React.Component {
                             </FormGroup>
                             <Button className="submit-register" onClick={()=>{
                                 this.handleSubmit()
-                            }}>REGISTER</Button>
+                            }}><Link to='/login'>REGISTER</Link></Button>
                         </Form>
                         <div className="policy">By continuing, you agree to accept our Privacy Policy & Terms of Service</div>
                         <div className="suggest-login">Already have an account? <Link to='/login' class="inside-link">Login</Link></div>

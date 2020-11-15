@@ -85,7 +85,7 @@ class Login extends React.Component {
                             </FormGroup>
                             <Button className="submit-login" onClick={()=>{
                                 this.handleSubmit()
-                            }}>LOG IN</Button>
+                            }}><Link to='/song_list'>LOG IN</Link></Button>
                         </Form>
                         <div className="policy">By continuing, you agree to accept our Privacy Policy & Terms of Service</div>
                         <div className="suggest-register">You don't have an account? <Link to='/register' class="inside-link">Register</Link></div>
