@@ -34,9 +34,7 @@ class SongView(ListAPIView):
     serializer_class = SongSerializer
 
     
-    # def post(self, request):
-        # will complete when making the frontend part of this,
-        # not sure what the post req should look like now.
+    # TO DO : make post function for search implementation
 
 class LogoutAndBlacklistRefreshTokenForUserView(APIView):
     permission_classes = (permissions.AllowAny,)
