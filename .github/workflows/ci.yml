@@ -63,8 +63,10 @@ jobs:
       with:
         node-version: 6.x
     - uses: actions/checkout@v2
-    - run: npm install -g eslint
-    - run: cd frontend && eslint --max-warnings 1 src
+    - run: |
+        cd frontend
+        npm install eslint
+        eslint --max-warnings 1 src
 
   frontend-tests:
     runs-on: ubuntu-latest
@@ -75,5 +77,7 @@ jobs:
       with:
         node-version: 6.x
     - uses: actions/checkout@v2
-    - run: cd frontend && npm install
-    - run: npm test
+    - run: |
+        cd frontend
+        npm install
+        npm test --all --forceExit --ci
