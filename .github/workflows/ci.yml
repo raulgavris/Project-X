@@ -71,5 +71,5 @@ jobs:
       with:
         node-version: 6.x
     - uses: actions/checkout@v2
-    - run: npm install
+    - run: cd frontend && npm install
     - run: npm test
