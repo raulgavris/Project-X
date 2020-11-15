@@ -31,7 +31,7 @@ services:
         - ./backend/.env
     depends_on:
         - db
-    entrypoint: /backend/entrypoint-backend.sh
+    command: /backend/entrypoint-backend.sh
 
   db:
     container_name: db
