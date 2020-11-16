@@ -28,7 +28,7 @@ jobs:
         KEY: ${{ secrets.SSHKEY }}
       with:
         source: "."
-        target: "/root/musichub"
+        target: "/musichub"
 
     - name: Build and deploy backend
       uses: appleboy/ssh-action@master
@@ -38,6 +38,8 @@ jobs:
         PORT: ${{ secrets.PORT }}
         KEY: ${{ secrets.SSHKEY }}
         script:
+          docker-compose -f musichub/docker-compose-production.yml down &&
+          docker-compose -f musichub/docker-compose-production.yml up -d --build frontend &&
           docker-compose -f musichub/docker-compose-production.yml up -d --build db &&
           docker-compose -f musichub/docker-compose-production.yml up -d --build backend &&
           docker-compose -f musichub/docker-compose-production.yml up -d --build nginx
