@@ -27,11 +27,22 @@
     width: 850px;
     margin-left: 1040px;
     font-size: 22px;
-    height: 400px;
+    // height: 400px;
+    height: auto;
+    max-height: 400px;
     overflow: auto;
   
 
 }
+.song-list-wrapper::-webkit-scrollbar{
+    background-color:#262425;
+ 
+}
+.song-list-wrapper::-webkit-scrollbar-thumb{
+    background-color: black;
+ 
+}
+
 
 .song_list_container{
   
