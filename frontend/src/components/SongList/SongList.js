@@ -6,11 +6,11 @@ import { getSongListRequest, postSongListRequest } from '../../redux';
 import {Container, Row, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
-
 import logo from './assets/Logo.png';
-import NavigationBar from '../NavigationBar'
 import './SongList.scss';
-// import 'bootstrap/dist/css/bootstrap.min.css';
+
+import NavigationBar from '../NavigationBar'
+import bootstrapGrid from 'bootstrap/scss/bootstrap-grid.scss';
 
 
 class SongList extends React.Component{
