@@ -6,9 +6,10 @@ import { getSongListRequest, postSongListRequest } from '../../redux';
 import {Container, Row, Col } from 'reactstrap';
 // import 'bootstrap/dist/css/bootstrap.css';
 import { Link } from 'react-router-dom';
+import bootstrapGrid from 'bootstrap/scss/bootstrap-grid.scss';
 
 import './SongList.scss';
-import NavigationBar from '../NavigationBar';
+// import NavigationBar from '../NavigationBar';
 import logo from './assets/Logo.png';
 
 class SongList extends React.Component{
@@ -16,6 +17,7 @@ class SongList extends React.Component{
         super(props);
         this.state = {
             loaded: false,
+            inputValue: '',
         };
 
     }
@@ -29,6 +31,7 @@ class SongList extends React.Component{
         }, 500);
     }
 
+    
     //I don't really need a submit here.
 
     render() {
@@ -46,32 +49,44 @@ class SongList extends React.Component{
                         <li className="li-links-wrapper"><Link to='/song_list'>CONNECT</Link></li>
                         {/* <li className="li-links-wrapper"><Link to='/about'>ABOUT</Link></li> */}
                         {/* <li className="li-links-wrapper"><Link to='/login'>LOGIN</Link></li> */}
+                        <li className="li-links-wrapper"><Link to='/'>LOG OUT</Link></li>
                         <li className="li-links-wrapper">Majeri Robert</li>
-                        <li className="li-links-wrapper"><Link to='/'>log out</Link></li>
                     </ul>
                 </navbar>
-                <h1> Connect with someone </h1>
+                <div className="song_list_header"> Connect with someone... </div>
+                <div className="song-list-wrapper">
                     <Container className="song_list_container">
-                        <Row class_name="header_row">
-                            <Col class_name = "header_col">Name</Col>
-                            <Col class_name = "header_col">Song</Col>
-                            <Col class_name = "header_col">Location</Col>
+                        <Row className="header_row">
+                            <Col  className = "header_col">User Name</Col>
+                            <Col  className = "header_col">Song</Col>
+                            <Col  className = "header_col">Artist</Col>
+                            <Col  className = "header_col">Location</Col>
                         </Row>
 
                         {this.props.songList.map(song =>
-                            <Row class_name="song_row">
-                                <Col class_name = "song_col">{song.user_name}</Col>
-                                <Col class_name = "song_col" >{song.title} - {song.artist}</Col>
-                                <Col class_name = "song_col">{song.user_location}</Col>
+                           <Row className="song_row">
+                                <Col  className = "song_col">{song.user_name}</Col>
+                                <Col  className = "song_col" >{song.title}</Col>
+                                <Col className = "song_col" >{song.artist} </Col>
+                                <Col className = "song_col">{song.user_location}</Col>
                             </Row>) }
                     </Container>
                 </div>
+                <div className="search_bar_wrapper">
+                    
+                    <input className="search" type = "text" placeHolder ="Search..."value = {this.props.inputValue}></input>
+                 
+                   
+                    </div> 
+                </div>
+                
         );
 
 
     };
 
 }
+
 
 const mapStateToProps = state => {
     return {
@@ -87,5 +102,6 @@ const mapDispatchToProps = dispatch => {
         dispatch
     };
 };
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(SongList);
