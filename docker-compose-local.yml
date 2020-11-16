@@ -29,8 +29,6 @@ services:
         - 8000
     env_file:
         - ./backend/.env
-    depends_on:
-        - db
     command: /backend/entrypoint-backend.sh
 
   db:
