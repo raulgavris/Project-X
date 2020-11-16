@@ -10,6 +10,7 @@
     // background-position-x: -10px;
     background-position-y: -80px;
     color: white;
+  
     
 
 }
@@ -26,6 +27,8 @@
     width: 850px;
     margin-left: 1040px;
     font-size: 22px;
+    height: 400px;
+    overflow: auto;
   
 
 }
@@ -40,8 +43,8 @@
 .header_row{
     display:flex;
     align-items: center;
-    background-color: #FCF1B9;
-    color: black;
+    background-color:#262425;
+    color: white;
     border-radius: 50px;
     height: 50px;
     font-weight: bold;
@@ -59,7 +62,7 @@
 .song_row{
     display: flex;
     margin-top:25px;
-   border-bottom:1px solid #FCF1B9;
+   border-bottom:1px solid #262425;
     
 }
 
@@ -89,13 +92,13 @@
     padding: 6px;
     border: none;
     font-size: 17px;
-    background-color: #FCF1B9;
+    background-color: #262425;
     border-radius: 30px;
     outline: 0;
 }
 
 .search:hover, .search:focus {
-    border: 1.5px solid #FCF1B9;
+    border: 1.5px solid #262425;
   }
 
  
