@@ -1,5 +1,5 @@
 from rest_framework import permissions
-from rest_framework.generics import GenericAPIView
+from rest_framework.generics import ListAPIView, GenericAPIView
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.views import APIView
@@ -44,9 +44,5 @@ class LogoutAndBlacklistRefreshTokenForUserView(APIView):
             token = RefreshToken(refresh_token)
             token.blacklist()
             return Response(status=205)
-<<<<<<< HEAD
-        except Exception as e:
-=======
         except Exception:
->>>>>>> flake8 fix backend
             return Response(status=400)

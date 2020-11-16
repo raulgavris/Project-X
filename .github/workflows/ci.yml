@@ -54,30 +54,30 @@ jobs:
       - name: Run Django Tests
         run:  docker-compose -f docker-compose-local.yml run --rm backend python manage.py test
 
-  frontend-linter:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js 6.x
-      uses: actions/setup-node@v1
-      with:
-        node-version: 6.x
-    - uses: actions/checkout@v2
-    - run: |
-        cd frontend
-        npm install eslint
-        eslint --max-warnings 1 src
+  # frontend-linter:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #   - name: Use Node.js 6.x
+  #     uses: actions/setup-node@v1
+  #     with:
+  #       node-version: 6.x
+  #   - uses: actions/checkout@v2
+  #   - run: |
+  #       cd frontend
+  #       npm install eslint
+  #       eslint --max-warnings 1 src
 
-  frontend-tests:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js 6.x
-      uses: actions/setup-node@v1
-      with:
-        node-version: 6.x
-    - uses: actions/checkout@v2
-    - run: |
-        cd frontend
-        npm install
-        npm test --all --forceExit --ci
+  # frontend-tests:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #   - name: Use Node.js 6.x
+  #     uses: actions/setup-node@v1
+  #     with:
+  #       node-version: 6.x
+  #   - uses: actions/checkout@v2
+  #   - run: |
+  #       cd frontend
+  #       npm install
+  #       npm test --all --forceExit --ci
