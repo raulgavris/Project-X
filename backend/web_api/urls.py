@@ -7,4 +7,3 @@ urlpatterns = [
     path('register/', RegisterApi.as_view()),
     path('songs/', SongView.as_view()),
 ]
-

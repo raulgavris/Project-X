@@ -12,14 +12,13 @@ class UserLocation(models.Model):
 class Song(models.Model):
     id = models.IntegerField(primary_key=True)
     title = models.CharField(max_length=50)
-    artist= models.CharField(max_length=50)
+    artist = models.CharField(max_length=50)
     user_name = models.CharField(max_length=20)
     user_location = models.CharField(max_length=20)
 
     def __str__(self):
         return self.title + "-" + self.artist
 
-
     class Meta:
-        db_table='song'
+        db_table = 'song'
         app_label = 'web_api'
