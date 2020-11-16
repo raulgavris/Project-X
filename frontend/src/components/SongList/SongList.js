@@ -4,12 +4,14 @@ import { connect } from 'react-redux';
 import { getSongListRequest, postSongListRequest } from '../../redux';
 // import styles from '../../styles/variables.scss';
 import {Container, Row, Col } from 'reactstrap';
-// import 'bootstrap/dist/css/bootstrap.css';
 import { Link } from 'react-router-dom';
 
-import './SongList.scss';
-import NavigationBar from '../NavigationBar';
+
 import logo from './assets/Logo.png';
+import NavigationBar from '../NavigationBar'
+import './SongList.scss';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 class SongList extends React.Component{
     constructor(props){
