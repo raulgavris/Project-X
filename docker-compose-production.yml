@@ -2,20 +2,6 @@ version: '3.7'
 
 services:
 
-  frontend:
-    container_name: fe
-    command: npm run build
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    volumes:
-      - './frontend:/frontend'
-      - '/frontend/node_modules'
-    ports:
-      - 5000:5000
-    environment:
-      - CHOKIDAR_USEPOLLING=true
-
   backend:
     container_name: be
     build:

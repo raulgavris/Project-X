@@ -4,7 +4,7 @@ services:
 
   frontend:
     container_name: fe
-    command: serve -s build
+    command: npm start
     build:
       context: ./frontend
       dockerfile: Dockerfile
