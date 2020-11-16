@@ -1,13 +1,11 @@
-from django.db import connection
-from django.contrib.auth.models import User
 from rest_framework import permissions
 from rest_framework.generics import ListAPIView, GenericAPIView
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.views import APIView
 
-from web_api.models import  Song
-from web_api.serializers import  UserSerializer, RegisterSerializer, SongSerializer
+from web_api.models import Song
+from web_api.serializers import UserSerializer, RegisterSerializer, SongSerializer
 
 
 class RegisterApi(GenericAPIView):
@@ -26,15 +24,15 @@ class RegisterApi(GenericAPIView):
             "message": "You're in the mainframe!",
         })
 
+
 class SongView(ListAPIView):
     permission_classes = (permissions.AllowAny,)
     authentication_classes = ()
 
     queryset = Song.objects.all()
     serializer_class = SongSerializer
-
-    
     # TO DO : make post function for search implementation
+
 
 class LogoutAndBlacklistRefreshTokenForUserView(APIView):
     permission_classes = (permissions.AllowAny,)
@@ -46,5 +44,5 @@ class LogoutAndBlacklistRefreshTokenForUserView(APIView):
             token = RefreshToken(refresh_token)
             token.blacklist()
             return Response(status=205)
-        except Exception as e:
+        except Exception:
             return Response(status=400)

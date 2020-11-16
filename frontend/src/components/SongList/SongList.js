@@ -8,7 +8,7 @@ import {Container, Row, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 import './SongList.scss';
-import NavigationBar from '../NavigationBar';
+// import NavigationBar from '../NavigationBar';
 import logo from './assets/Logo.png';
 
 class SongList extends React.Component{
