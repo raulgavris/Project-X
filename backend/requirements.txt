@@ -11,3 +11,4 @@ django-dotenv
 django-cors-headers
 djangorestframework
 djangorestframework_simplejwt
+flake8

@@ -24,7 +24,7 @@ services:
     volumes:
         - ./backend:/backend
     expose:
-        - 8000:8000
+        - 8000
     env_file:
         - ./backend/.env
     depends_on:

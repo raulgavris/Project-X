@@ -45,3 +45,53 @@ And for the frontend dev server:
 ```
     $ docker-compose -f docker-compose-local.yml up --build -d frontend
 ```
+
+
+### Automated checks using github actions and docker
+
+For ensuring code quality and contineous integration, we added tests and linters that run automatically upon creating a new pull request (or adding new commits to an existing one).
+
+Tests, are.. unit tests for small pieces of code that test a certain functionallity. We have them for both frontend and backend.
+
+Linters are tools that check certain standards are met. For example: the spacing is right, there are no unused imports, so on and so forth.
+
+If you want, you can run these commands by hand, or using a single docker command for each step.
+
+To run backend linter:
+```
+$ flake8 backend/
+```
+Or using docker (you may need to build the container first! see 'Using docker to setup everything'):
+```
+$ docker-compose -f docker-compose-local.yml run --rm backend flake8 --max-line-length 120 .
+```
+
+To run backend tests:
+```
+$ ./manage.py test
+```
+
+Or using docker (you may need to build the container first! see 'Using docker to setup everything'):
+```
+$ docker-compose -f docker-compose-local.yml run --rm backend python manage.py test
+```
+
+To run frontend linter:
+```
+$ eslint src/
+```
+
+Or using docker (you may need to build the container first! see 'Using docker to setup everything'):
+```
+$ docker-compose -f docker-compose-local.yml run --rm frontend eslint --max-warnings 0 src
+```
+
+To run frontend tests:
+```
+$ npm test
+```
+
+Or using docker (you may need to build the container first! see 'Using docker to setup everything'):
+```
+$ docker-compose -f docker-compose-local.yml run --rm frontend npm test
+```
