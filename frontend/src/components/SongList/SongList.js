@@ -1,23 +1,32 @@
 import React from 'react';
-// import LoadingScreen from 'react-loading-screen';
+
 import { connect } from 'react-redux';
 import { getSongListRequest, postSongListRequest } from '../../redux';
-// import styles from '../../styles/variables.scss';
 import {Container, Row, Col } from 'reactstrap';
-// import 'bootstrap/dist/css/bootstrap.css';
 import { Link } from 'react-router-dom';
 
 import './SongList.scss';
 // import NavigationBar from '../NavigationBar';
 import logo from './assets/Logo.png';
+import bootstrapGrid from 'bootstrap/scss/bootstrap-grid.scss';
+import NavigationBar from '../NavigationBar';
+
 
 class SongList extends React.Component{
     constructor(props){
         super(props);
         this.state = {
             loaded: false,
+            searchKey: '',
+            songList: [ ]
         };
 
+        this.handleChange = this.handleChange.bind(this);
+
+    }
+
+    handleChange(event){
+        this.setState({searchKey : event.target.value.toLowerCase()});
     }
 
     componentDidMount() {
@@ -26,19 +35,22 @@ class SongList extends React.Component{
             this.setState({
                 loaded: this.props.loaded,
             })
-        }, 500);
+        }, 1000);
     }
 
-    //I don't really need a submit here.
-
-    render() {
+    render() {    
+       
+        const songs = this.props.songList
+       
+        
         if (this.state.loaded === false) {
             return (
                <div> Page failed to load !!</div>
             )
         }
         return (
-                <div className = "song-list">
+            <div className = "song-list">
+                <div></div>
                 <navbar className="navigation-bar">
                     <div className="logo"><Link to='/'> <img src={logo} alt="Logo" /></Link></div>
                     <ul className="ul-links-wrapper">
@@ -46,26 +58,40 @@ class SongList extends React.Component{
                         <li className="li-links-wrapper"><Link to='/song_list'>CONNECT</Link></li>
                         {/* <li className="li-links-wrapper"><Link to='/about'>ABOUT</Link></li> */}
                         {/* <li className="li-links-wrapper"><Link to='/login'>LOGIN</Link></li> */}
+                        <li className="li-links-wrapper"><Link to='/'>LOG OUT</Link></li>
                         <li className="li-links-wrapper">Majeri Robert</li>
-                        <li className="li-links-wrapper"><Link to='/'>log out</Link></li>
                     </ul>
                 </navbar>
-                <h1> Connect with someone </h1>
+                <div className="song_list_header"> Connect with someone... </div>
+                <div className="song-list-wrapper">
                     <Container className="song_list_container">
-                        <Row class_name="header_row">
-                            <Col class_name = "header_col">Name</Col>
-                            <Col class_name = "header_col">Song</Col>
-                            <Col class_name = "header_col">Location</Col>
+                        <Row className="header_row">
+                            <Col  className = "header_col">User Name</Col>
+                            <Col  className = "header_col">Song</Col>
+                            <Col  className = "header_col">Artist</Col>
+                            <Col  className = "header_col">Location</Col>
                         </Row>
-
-                        {this.props.songList.map(song =>
-                            <Row class_name="song_row">
-                                <Col class_name = "song_col">{song.user_name}</Col>
-                                <Col class_name = "song_col" >{song.title} - {song.artist}</Col>
-                                <Col class_name = "song_col">{song.user_location}</Col>
-                            </Row>) }
+                        
+                        {songs.filter(song => song.title.toLowerCase().includes(this.state.searchKey) ||song.artist.toLowerCase().includes(this.state.searchKey) ||
+                                                song.user_name.toLowerCase().includes(this.state.searchKey) ||
+                                                song.user_location.toLowerCase().includes(this.state.searchKey) )
+                                .map(song =>
+                                    <Row className="song_row">
+                                        <Col  className = "song_col">{song.user_name}</Col>
+                                        <Col  className = "song_col" >{song.title}</Col>
+                                        <Col className = "song_col" >{song.artist} </Col>
+                                        <Col className = "song_col">{song.user_location}</Col>
+                                    </Row>) }
                     </Container>
+                
                 </div>
+                <div className="search_bar_wrapper">
+                    
+                    <input className="search" type = "text" placeHolder ="Search..."value = {this.state.searchKey} onChange={this.handleChange}></input>
+                 
+                </div> 
+            </div>
+                
         );
 
 
@@ -73,13 +99,15 @@ class SongList extends React.Component{
 
 }
 
+
 const mapStateToProps = state => {
+    console.log("state.searchKey");
     return {
-        songList : state.songListReducer.song_list_get
+        songList : Object.values(state.songListReducer.song_list_get)
+     
     };
 };
 
-//map dispatch to props
 const mapDispatchToProps = dispatch => {
     return {
         getSongListDispatch: () => dispatch(getSongListRequest()),
@@ -87,5 +115,6 @@ const mapDispatchToProps = dispatch => {
         dispatch
     };
 };
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(SongList);
