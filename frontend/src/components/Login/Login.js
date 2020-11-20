@@ -44,19 +44,19 @@ class Login extends React.Component {
     }
 
     render() {
-        if (this.state.loaded === false) {
-            return (
-                <LoadingScreen
-                    loading={!this.state.loaded}
-                    bgColor={styles.color1}
-                    spinnerColor={styles.color2}
-                    textColor={styles.color4}
-                    logoSrc=''
-                    text='Loading Music Hub'
-                    children=''
-                />
-            )
-        }
+        // if (this.state.loaded === false) {
+        //     return (
+        //         <LoadingScreen
+        //             loading={!this.state.loaded}
+        //             bgColor={styles.color1}
+        //             spinnerColor={styles.color2}
+        //             textColor={styles.color4}
+        //             logoSrc=''
+        //             text='Loading Music Hub'
+        //             children=''
+        //         />
+        //     )
+        // }
         return (
         <div className='login_page'>
             <NavigationBar/>
