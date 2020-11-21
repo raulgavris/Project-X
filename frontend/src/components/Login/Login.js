@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Form, FormGroup, Input, Button } from 'reactstrap';
 import {  withRouter } from 'react-router-dom';
 import LoadingScreen from 'react-loading-screen';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 import {  postTokenRequest } from '../../redux';

@@ -2,10 +2,7 @@ import axios from 'axios';
 
 // Default API will be your root
 
-// const API_ROOT = process.env.URL || 'http://0.0.0.0:8000/api/';
-const API_ROOT = process.env.URL || 'http://127.0.0.1:8000/api/';
-// const API_ROOT = process.env.URL || 'http://localhost:8000/api/';
-
+const API_ROOT = process.env.REACT_APP_API_URL || 'http://127.0.0.1:8000/api/';
 
 const TIMEOUT = 5000;
 const HEADERS = {
