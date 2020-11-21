@@ -16,6 +16,8 @@ services:
     environment:
       - CHOKIDAR_USEPOLLING=true
       - CI=true
+    env_file:
+      - ./frontend/.env
 
   backend:
     container_name: be
