@@ -44,7 +44,7 @@ class ApiService {
       if ( refreshToken ) {
         bareRefreshToken = refreshToken.replace("JWT ", '');
       } else {
-        window.location.href = '/admin-login/';
+        window.location.href = '/login/';
         return Promise.reject(error);
       }
       if (bareRefreshToken !== 'undefined' && bareRefreshToken !== null){
@@ -71,11 +71,11 @@ class ApiService {
                   });
         } else {
           console.log("Refresh token is expired", tokenParts.exp, now);
-          window.location.href = '/admin-login/';
+          window.location.href = '/login/';
         }
       } else {
         console.log("Refresh token not available.")
-        window.location.href = '/admin-login/';
+        window.location.href = '/login/';
       }
     }
 

@@ -9,9 +9,7 @@ export const postRegister = ()  => {
 };
 
 export const postRegisterSuccess = token  => {
-    // sessionStorage.setItem('access_token', token.access_token);
-    // sessionStorage.setItem('refresh_token', token.refresh_token);
-    window.location.href = '/';
+    window.location.href = '/login/';
     return {
         type: POST_REGISTER_SUCCESS,
         payload: token,
@@ -25,11 +23,11 @@ export const postRegisterFailure = error  => {
     };
 };
 
-export const postRegisterRequest = (username, password, firstname, lastname) => {
+export const postRegisterRequest = (email, password, firstname, lastname) => {
     return (dispatch) => {
         dispatch(postRegister())
         WebApiService.register({
-            username: username,
+            email: email,
             password: password,
             first_name: firstname,
             last_name: lastname,

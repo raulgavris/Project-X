@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { Form, FormGroup, Input, Button } from 'reactstrap';
 import {  withRouter } from 'react-router-dom';
 import LoadingScreen from 'react-loading-screen';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+
 
 import {  postTokenRequest } from '../../redux';
 
@@ -18,7 +19,7 @@ class Login extends React.Component {
         super(props);
         this.state = {
             loaded: false,
-            username: '',
+            email: '',
             password: '',
         };
 
@@ -40,7 +41,7 @@ class Login extends React.Component {
     }
 
     async handleSubmit(e) {
-        this.props.dispatch(postTokenRequest(this.state.username, this.state.password));
+        this.props.dispatch(postTokenRequest(this.state.email, this.state.password));
     }
 
     render() {
@@ -69,9 +70,9 @@ class Login extends React.Component {
                             <FormGroup className="formgroup-login">
                                 <Input
                                     className="input-login"
-                                    name="username"
-                                    placeholder="Username"
-                                    maxLength={20}
+                                    name="email"
+                                    placeholder="Email"
+                                    maxLength={100}
                                     onChange={this.handleChange} />
                             </FormGroup>
                             <FormGroup className="formgroup-login">
@@ -83,12 +84,12 @@ class Login extends React.Component {
                                     maxLength={20}
                                     onChange={this.handleChange} />
                             </FormGroup>
-                            <Link to='/song_list'><Button className="submit-login" onClick={()=>{
+                            <Button className="submit-login" onClick={()=>{
                                 this.handleSubmit()
-                            }}>LOG IN</Button></Link>
+                            }}>LOG IN</Button>
                         </Form>
                         <div className="policy">By continuing, you agree to accept our Privacy Policy & Terms of Service</div>
-                        <div className="suggest-register">You don't have an account? <Link to='/register' class="inside-link">Register</Link></div>
+                        <div className="suggest-register">You don't have an account? <Link to='/register' className="inside-link">Register</Link></div>
                     </div>
                 </div>
             </div>
@@ -111,4 +112,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Login));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));
