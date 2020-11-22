@@ -61,6 +61,10 @@ Form {
             .input-register::placeholder{
                 color:rgb(219, 209, 209);
             }
+            input[type=text] {
+                color: white;
+           
+              }
         }
         .submit-register {
             width: 60%;
@@ -70,6 +74,7 @@ Form {
             background: black;
             border-color: black;
             font-weight: bold;
+            outline:none;
         }
         .submit-register:hover{
             transform:scale(1.02);
