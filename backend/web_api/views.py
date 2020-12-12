@@ -5,7 +5,8 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.views import APIView
 
 from rest_framework_simplejwt.views import TokenObtainPairView
-
+from django.shortcuts import get_object_or_404
+from .models import UserLocation
 from web_api.models import Song
 from web_api.serializers import UserSerializer, RegisterSerializer, SongSerializer, CustomTokenObtainPairSerializer
 
@@ -51,3 +52,8 @@ class LogoutAndBlacklistRefreshTokenForUserView(APIView):
 
 class CustomTokenObtainPairView(TokenObtainPairView):
     serializer_class = CustomTokenObtainPairSerializer
+
+
+def calculate_distance_view(request):
+    obj = get_object_or_404(UserLocation, id=1)
+    

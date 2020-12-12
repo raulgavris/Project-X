@@ -4,7 +4,8 @@ from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
-
+from django.contrib.gis.geoip2 import GeoIP2
+from .utils import *
 from .managers import CustomUserManager
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
@@ -28,8 +29,11 @@ class UserLocation(models.Model):
     User = CustomUser()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateTimeField(auto_now_add=True)
-    lat = models.IntegerField()
-    lng = models.IntegerField()
+    ip=request.M
+    lat = models.IntegerField(default=get_geo_lat(get_ip_address()))
+    lng = models.IntegerField(default=get_geo_lng(get_ip_address(GET)))
+    
+    
 
 
 class Song(models.Model):
