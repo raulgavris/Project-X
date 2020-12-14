@@ -1,4 +1,6 @@
 from django.contrib.gis.geoip2 import GeoIP2
+import geoip2.database
+
 
 # Helper functions
 
@@ -9,6 +11,12 @@ def get_ip_address(request):
     else:
         ip = request.META.get('REMOTE_ADDR')
     return ip
+
+
+# def get_lat(ip):
+#     with geoip2.database.Reader('/mnt/c/dev/musichub/mhub/musichub/backend/main/GeoLite/GeoLite2-City.mmdb') as reader:
+#         response = reader.city(ip)
+#     return response.location.latitude
 
 def get_geo_lat(ip):
     g = GeoIP2()
@@ -23,6 +31,13 @@ def get_geo_lng(ip):
     city = g.city(ip)
     lat, lon = g.lat_lon(ip)
     return lon
+
+def get_geo(ip):
+    g = GeoIP2()
+    country = g.country(ip)
+    city = g.city(ip)
+    lat, lon = g.lat_lon(ip)
+    return country, city, lat, lon
 
 def get_center_coordinates(latA, longA, latB=None, longB=None):
     cord = (latA, longA)

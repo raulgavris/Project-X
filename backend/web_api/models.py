@@ -29,9 +29,8 @@ class UserLocation(models.Model):
     User = CustomUser()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateTimeField(auto_now_add=True)
-    ip=request.M
-    lat = models.IntegerField(default=get_geo_lat(get_ip_address()))
-    lng = models.IntegerField(default=get_geo_lng(get_ip_address(GET)))
+    lat = models.DecimalField(default=get_geo_lat('81.196.121.4'),max_digits=7, decimal_places=4)
+    lng = models.DecimalField(default=get_geo_lng('81.196.121.4'),max_digits=7, decimal_places=4)
     
     
 

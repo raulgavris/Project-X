@@ -83,7 +83,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'main.wsgi.application'
 
-GEOIP_PATH = '/mnt/d/Proiect/musichub/backend/main/GeoLite'
+GEOIP_PATH = '/mnt/c/dev/musichub/mhub/musichub/backend/main/GeoLite'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
@@ -100,7 +100,7 @@ else:
         'default': {
             'ENGINE': 'django.db.backends.mysql',
             'NAME': 'musichub',
-            'USER': 'oanaa',
+            'USER': 'ubusuc',
             'PASSWORD': 'password',
             'HOST': '127.0.0.1',
             'PORT': 3306,
