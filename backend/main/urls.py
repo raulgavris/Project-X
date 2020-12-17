@@ -36,4 +36,6 @@ urlpatterns = [
 
     path('blacklist/', LogoutAndBlacklistRefreshTokenForUserView.as_view(), name='blacklist'),
 
+    path('social/', include('social_django.urls')),
+    path('social/complete/spotify/', incude ('social_django.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

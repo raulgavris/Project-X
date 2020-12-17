@@ -41,9 +41,7 @@ services:
         - '--default-authentication-plugin=mysql_native_password'
         - '--character-set-server=utf8'
     ports:
-        - 3306:3306
-    expose:
-        - '3306'
+        - 3307:3306
     volumes:
         - ./backend/db:/var/lib/mysql
     env_file:

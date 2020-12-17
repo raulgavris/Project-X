@@ -11,3 +11,5 @@ django-dotenv
 django-cors-headers
 djangorestframework
 djangorestframework_simplejwt
+social-auth-core
+social-auth-app-django
