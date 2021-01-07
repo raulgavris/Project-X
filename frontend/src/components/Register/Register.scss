@@ -1,16 +1,16 @@
 .register_page {
     position: absolute;
-    background-image: url('./assets/background.jpg');
+    background-image: url('./assets/background.webp');
     width: 100%;
     height: 100%;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+    box-shadow:inset 0 0 0 500px rgba(0,0,0,0.3);
 }
 
 .header {
-    font-weight: bold;
-    font-size: 45px;
+    // font-weight: bold;
     text-align: center;
 
 }
@@ -19,15 +19,18 @@ Form {
     width: 500px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 5%;
+    
 }
 
 .register-wrapper {
     text-align: center;
+
+    
     .register {
-        .title-register {
+        .contact-title-register {
             margin-bottom: 10%;
-            font-size: 30px;
+            font-size: 40px;
+            font-weight: lighter;
         }
         .formgroup-register {
             width : 500px;
@@ -55,6 +58,13 @@ Form {
                 font-size: 20px;
                 color: black;
             }
+            .input-register::placeholder{
+                color:rgb(219, 209, 209);
+            }
+            input[type=text] {
+                color: white;
+           
+              }
         }
         .submit-register {
             width: 60%;
@@ -64,6 +74,11 @@ Form {
             background: black;
             border-color: black;
             font-weight: bold;
+            outline:none;
+        }
+        .submit-register:hover{
+            transform:scale(1.02);
+            font-size: 15px; 
         }
     }
     .policy {

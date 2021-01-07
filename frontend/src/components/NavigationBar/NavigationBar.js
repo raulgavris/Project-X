@@ -12,7 +12,7 @@ class NavigationBar extends React.Component {
 
     render(){
         return (
-        <navbar className="navigation-bar">
+        <nav className="navigation-bar">
             <div className="logo"><Link to='/'> <img src={logo} alt="Logo" /></Link></div>
             <ul className="ul-links-wrapper">
                 <li className="li-links-wrapper"><Link to='/'>HOME</Link></li>
@@ -21,7 +21,7 @@ class NavigationBar extends React.Component {
                 <li className="li-links-wrapper"><Link to='/login'>LOG IN</Link></li>
                 <li className="li-links-wrapper"><Link to='/register'>REGISTER</Link></li>
             </ul>
-        </navbar>
+        </nav>
         )};
 };
 

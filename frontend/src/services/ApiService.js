@@ -2,10 +2,7 @@ import axios from 'axios';
 
 // Default API will be your root
 
-// const API_ROOT = process.env.URL || 'http://0.0.0.0:8000/api/';
-const API_ROOT = process.env.URL || 'http://127.0.0.1:8000/api/';
-// const API_ROOT = process.env.URL || 'http://localhost:8000/api/';
-
+const API_ROOT = process.env.REACT_APP_API_URL || 'http://127.0.0.1:8000/api/';
 
 const TIMEOUT = 5000;
 const HEADERS = {
@@ -44,7 +41,7 @@ class ApiService {
       if ( refreshToken ) {
         bareRefreshToken = refreshToken.replace("JWT ", '');
       } else {
-        window.location.href = '/admin-login/';
+        window.location.href = '/login/';
         return Promise.reject(error);
       }
       if (bareRefreshToken !== 'undefined' && bareRefreshToken !== null){
@@ -71,11 +68,11 @@ class ApiService {
                   });
         } else {
           console.log("Refresh token is expired", tokenParts.exp, now);
-          window.location.href = '/admin-login/';
+          window.location.href = '/login/';
         }
       } else {
         console.log("Refresh token not available.")
-        window.location.href = '/admin-login/';
+        window.location.href = '/login/';
       }
     }
 

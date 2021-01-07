@@ -3,8 +3,9 @@
     background-attachment: fixed;
     background-size: cover;
     background-position-y: 20%;
-    background-image: url('./assets/navbar.jpg');
-    height: 120px;
+    // background-image: url('./assets/navbar.jpg');
+    // background-color: black;
+    height: 80px;
     display: flex;
     flex-direction: row;
     color: white;
@@ -22,11 +23,25 @@
         //    padding-right: 20;
             margin-left: 40px;
             margin-right: 30px;
-            margin-top: 27px;
-            font-size: 18px;
-            font-weight: bold;
+            margin-top: 20px;
+            font-size: 15   px;
+            padding:8px 15px 8px 15px;
+            // background-color: black;
+            // border-radius: 50px;
             Link {
+                
             }
+             a:visited, a:link, a:active {
+                text-decoration: none;
+                color: white;
+            }
+            a:hover{
+                font-weight: bold;
+                font-size: 16px;
+              
+            }
+            
+            
         }
     }
 }

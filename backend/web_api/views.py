@@ -4,11 +4,15 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.views import APIView
 
+from rest_framework_simplejwt.views import TokenObtainPairView
+
 from web_api.models import Song
-from web_api.serializers import UserSerializer, RegisterSerializer, SongSerializer
+from web_api.serializers import UserSerializer, RegisterSerializer, SongSerializer, CustomTokenObtainPairSerializer
 
 
 class RegisterApi(GenericAPIView):
+    permission_classes = (permissions.AllowAny,)
+    authentication_classes = ()
 
     serializer_class = RegisterSerializer
 
@@ -26,9 +30,6 @@ class RegisterApi(GenericAPIView):
 
 
 class SongView(ListAPIView):
-    permission_classes = (permissions.AllowAny,)
-    authentication_classes = ()
-
     queryset = Song.objects.all()
     serializer_class = SongSerializer
     # TO DO : make post function for search implementation
@@ -46,3 +47,7 @@ class LogoutAndBlacklistRefreshTokenForUserView(APIView):
             return Response(status=205)
         except Exception:
             return Response(status=400)
+
+
+class CustomTokenObtainPairView(TokenObtainPairView):
+    serializer_class = CustomTokenObtainPairSerializer

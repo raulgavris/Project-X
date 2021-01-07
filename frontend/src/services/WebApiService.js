@@ -1,8 +1,7 @@
 import ApiService from './ApiService';
 
-// const BASE_URL = 'http://0.0.0.0:8000/api/';
-// const BASE_URL = 'http://46.101.186.67/api/';
-const BASE_URL = 'http://127.0.0.1:8000/api/';
+const BASE_URL = process.env.REACT_APP_API_URL || 'http://127.0.0.1:8000/api/';
+
 const client = new ApiService({ baseURL: BASE_URL });
 
 const WebApiService = {};

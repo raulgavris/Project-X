@@ -17,7 +17,7 @@ class Register extends React.Component {
         super(props);
         this.state = {
             loaded: true,
-            username: '',
+            email: '',
             password: '',
             firstname: '',
             lastname: '',
@@ -40,7 +40,7 @@ class Register extends React.Component {
     }
 
     async handleSubmit(e) {
-        this.props.dispatch(postRegisterRequest(this.state.username, this.state.password, this.state.firstname, this.state.lastname));
+        this.props.dispatch(postRegisterRequest(this.state.email, this.state.password, this.state.firstname, this.state.lastname));
     }
 
     render() {
@@ -68,9 +68,9 @@ class Register extends React.Component {
                             <FormGroup className="formgroup-register">
                                 <Input
                                     className="input-register"
-                                    name="username"
-                                    placeholder="Username"
-                                    maxLength={20}
+                                    name="email"
+                                    placeholder="Email"
+                                    maxLength={100}
                                     onChange={this.handleChange} />
                             </FormGroup>
                             <FormGroup className="formgroup-register">
@@ -100,7 +100,7 @@ class Register extends React.Component {
                             </FormGroup>
                             <Button className="submit-register" onClick={()=>{
                                 this.handleSubmit()
-                            }}><Link to='/login'>REGISTER</Link></Button>
+                            }}>REGISTER</Button>
                         </Form>
                         <div className="policy">By continuing, you agree to accept our Privacy Policy & Terms of Service</div>
                         <div className="suggest-login">Already have an account? <Link to='/login' class="inside-link">Login</Link></div>
@@ -125,4 +125,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Register));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Register));

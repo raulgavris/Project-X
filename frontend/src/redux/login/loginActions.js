@@ -12,7 +12,7 @@ export const postToken = ()  => {
 export const postTokenSuccess = token  => {
     sessionStorage.setItem('access_token', token.access_token);
     sessionStorage.setItem('refresh_token', token.refresh_token);
-    window.location.href = '/';
+    window.location.href = '/song_list';
     return {
         type: POST_TOKEN_SUCCESS,
         payload: token,
@@ -47,11 +47,11 @@ export const blacklistTokenFailure = error  => {
     };
 };
 
-export const postTokenRequest = (username, password) => {
+export const postTokenRequest = (email, password) => {
     return (dispatch) => {
         dispatch(postToken())
         WebApiService.postToken({
-            username: username,
+            email: email,
             password: password,
         })
         .then(response => {
@@ -59,8 +59,9 @@ export const postTokenRequest = (username, password) => {
                 access_token: response.data.access,
                 refresh_token: response.data.refresh,
             }
-            sessionStorage.setItem('username', username);
-            sessionStorage.setItem('password', password);
+            sessionStorage.setItem('email', email);
+            sessionStorage.setItem('first_name', response.data.first_name);
+            sessionStorage.setItem('last_name', response.data.last_name);
             dispatch(postTokenSuccess(config))
         }).catch(error => {
             const errorMessage = error.message

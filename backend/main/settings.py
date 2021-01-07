@@ -85,6 +85,7 @@ WSGI_APPLICATION = 'main.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
+
 if sys.argv[1] == 'test':
     DATABASES = {
         'default': {
@@ -164,7 +165,7 @@ REST_FRAMEWORK = {
 
 }
 
-# AUTH_USER_MODEL = 'web_api.CustomUser'
+AUTH_USER_MODEL = 'web_api.CustomUser'
 
 
 SIMPLE_JWT = {
