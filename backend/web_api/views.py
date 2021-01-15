@@ -3,12 +3,23 @@ from rest_framework.generics import ListAPIView, GenericAPIView
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.views import APIView
+from ipware import get_client_ip
+import requests
+import math
+from django.contrib.gis.geos import GEOSGeometry,fromstr
+from django.contrib.gis.db.backends.postgis import *
+from django.contrib.gis.measure import D, Distance
+
 
 from rest_framework_simplejwt.views import TokenObtainPairView
-
+from django.shortcuts import get_object_or_404
+from .models import UserLocation
 from web_api.models import Song
-from web_api.serializers import UserSerializer, RegisterSerializer, SongSerializer, CustomTokenObtainPairSerializer
+from web_api.serializers import UserSerializer, RegisterSerializer, SongSerializer, CustomTokenObtainPairSerializer,UserLocationSerializer
+from .utils import *
 
+
+from rest_framework.decorators import api_view, renderer_classes
 
 class RegisterApi(GenericAPIView):
     permission_classes = (permissions.AllowAny,)
@@ -51,3 +62,61 @@ class LogoutAndBlacklistRefreshTokenForUserView(APIView):
 
 class CustomTokenObtainPairView(TokenObtainPairView):
     serializer_class = CustomTokenObtainPairSerializer
+
+
+def calculate_ip(request):
+    ip=get_ip_address(request)
+    return ip
+
+
+class UserLocationView(APIView):
+    permission_classes = (permissions.AllowAny,)
+    http_method_names = ['get', 'head']
+
+   
+    def nearby_spots_old(request):
+        """
+        WITHOUT use of any external library, using raw MySQL and Haversine Formula
+        http://en.wikipedia.org/wiki/Haversine_formula
+        """
+        radius = 5000
+        limit=500
+        ip=requests.get("http://ipconfig.in/ip").text
+        ip=ip.rstrip()
+        lat=get_geo_lat(ip)
+        lng=get_geo_lng(ip)
+
+        query = """SELECT id, (6367*acos(cos(radians(%2f))
+                *cos(radians(lat))*cos(radians(lng)-radians(%2f))
+                +sin(radians(%2f))*sin(radians(lat))))
+                AS distance FROM web_api_userlocation HAVING
+                distance < %2f ORDER BY distance LIMIT 0, %d""" % (
+            float(lat),
+            float(lng),
+            float(lat),
+            radius,
+            limit
+        )
+        queryset=UserLocation.objects.raw(query)
+
+        # distance = 6367*math.acos(math.cos(math.radians(lat))
+        #         *math.cos(math.radians(lat))*math.cos(math.radians(lng)-math.radians(lng))
+        #         +math.sin(math.radians(lat))*math.sin(math.radians(lat)))
+        # query=UserLocation.objects.filter(distance<5000)
+
+
+
+        # user_location = fromstr("POINT(%s %s)" % (lng, lat))
+        # print(user_location)
+        # desired_radius = {'m': radius}
+        # queryset = UserLocation.objects.filter(id__distance_lte=(user_location, D(**desired_radius))).distance(user_location).order_by('distance')[:limit]
+        serializer = UserLocationSerializer(queryset, many=True)
+        return serializer
+
+    def get(self, request, format=None):
+        users = UserLocation.objects.all()
+        serializer = self.nearby_spots_old()
+        return Response(serializer.data)
+
+ 
+    

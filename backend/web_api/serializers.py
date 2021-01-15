@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
-from web_api.models import Song, CustomUser
+from web_api.models import Song, CustomUser, UserLocation
 
 
 class RegisterSerializer(serializers.ModelSerializer):
@@ -25,6 +25,11 @@ class RegisterSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
+        fields = '__all__'
+
+class UserLocationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model =  UserLocation
         fields = '__all__'
 
 
